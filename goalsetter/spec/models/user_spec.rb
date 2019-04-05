@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
     end
     # reset_session_token!
 
-    describe "#find_bycredentials" do
+    describe "User::find_bycredentials" do
       it "should find the user with the given credentials" do
         user.save
         brian = User.find_by_credentials("brian", "password")
@@ -49,14 +49,10 @@ RSpec.describe User, type: :model do
       it "should return nil if credentials don't match" do
         user.save
         brian = User.find_by_credentials("brian", "passwerd")
-        expect(user).to be(nil)
+        expect(brian).to be(nil)
       end
     end
-    # User::find_by_credentials
-    #
-    #
-    #    password=
-    #  is_password?
+  
   end
 
 end

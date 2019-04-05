@@ -44,6 +44,11 @@ RSpec.describe UsersController, type: :controller do
             expect(response).to render_template("show")
             expect(response).to have_http_status(200)
         end
+
+        it "displays an error if invalid user id" do
+            get :show, params:{id: 0}
+            expect(flash[:errors]).to be_present
+        end
     end
 
     describe "GET #index" do
